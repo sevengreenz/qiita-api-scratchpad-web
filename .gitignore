@@ -1,0 +1,15 @@
+# package directories
+node_modules
+jspm_packages
+
+# Serverless directories
+.serverless
+dist
+
+*.swp
+.DS_Store
+npm-debug.log
+
+.env.production
+dist/build.js
+dist/build.js.map
