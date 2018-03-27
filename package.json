@@ -7,7 +7,7 @@
     "style:check": "tslint -e './node_modules/**/*.ts' --project tsconfig.json './**/*.ts'",
     "style:fix": "tslint -e './node_modules/**/*.ts' --fix --project tsconfig.json './**/*.ts'",
     "build": "webpack && cp index.html ./dist/index.html",
-    "dev": "webpack-dev-server --inline",
+    "dev": "webpack-serve",
     "test": "jest",
     "deploy": "NODE_ENV=producion npm run build:client && npm run build:server && serverless deploy && serverless s3deploy"
   },
@@ -37,16 +37,17 @@
     "jest": "^22.1.4",
     "serverless": "^1.23.0",
     "ts-jest": "^22.0.1",
-    "ts-loader": "^2.3.7",
+    "ts-loader": "^4.1.0",
     "tslint": "^5.8.0",
     "tslint-config-airbnb": "^5.3.0",
     "typescript": "^2.5.3",
-    "vue-loader": "^13.3.0",
+    "vue-loader": "^14.2.2",
     "vue-template-compiler": "^2.5.2",
     "vuetype": "^0.2.2",
     "vuex-typescript": "^3.0.2",
-    "webpack": "^3.8.1",
-    "webpack-dev-server": "^2.9.4"
+    "webpack": "^4.3.0",
+    "webpack-cli": "^2.0.13",
+    "webpack-serve": "^0.2.0"
   },
   "jest": {
     "transform": {
