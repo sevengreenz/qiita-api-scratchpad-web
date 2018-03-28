@@ -6,8 +6,9 @@
   "scripts": {
     "style:check": "tslint -e './node_modules/**/*.ts' --project tsconfig.json './**/*.ts'",
     "style:fix": "tslint -e './node_modules/**/*.ts' --fix --project tsconfig.json './**/*.ts'",
-    "build": "webpack && cp index.html ./dist/index.html",
-    "dev": "webpack-serve",
+    "build:dev": "NODE_ENV=development webpack && cp index.html ./dist/index.html",
+    "build:production": "NODE_ENV=production webpack && cp index.html ./dist/index.html",
+    "dev": "NODE_ENV=development webpack-serve",
     "test": "jest",
     "deploy": "NODE_ENV=producion npm run build:client && npm run build:server && serverless deploy && serverless s3deploy"
   },
