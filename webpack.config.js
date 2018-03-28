@@ -2,6 +2,8 @@ var path = require('path')
 var webpack = require('webpack')
 const Dotenv = require('dotenv-webpack')
 
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+
 const DEBUG = process.env.NODE_ENV !== 'production'
 
 module.exports = {
@@ -62,26 +64,37 @@ module.exports = {
       safe: false
     }),
   ],
-  devtool: 'source-map'
+  devtool: 'source-map',
 }
 
 if (!DEBUG) {
-  module.exports.devtool = 'eval'
-  // http://vue-loader.vuejs.org/en/workflow/production.html
-  module.exports.plugins = (module.exports.plugins || []).concat([
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: '"production"'
-      }
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
-      compress: {
-        warnings: false
-      }
-    }),
-    new webpack.LoaderOptionsPlugin({
-      minimize: true
-    })
-  ])
+  module.exports.optimization = {
+    minimizer: [
+      new UglifyJSPlugin({
+        uglifyOptions: {
+          compress: {
+            drop_console: true
+          }
+        }
+      })
+    ]
+  }
+  //   module.exports.devtool = 'eval'
+  //   // http://vue-loader.vuejs.org/en/workflow/production.html
+  //   module.exports.plugins = (module.exports.plugins || []).concat([
+  //     new webpack.DefinePlugin({
+  //       'process.env': {
+  //         NODE_ENV: '"production"'
+  //       }
+  //     }),
+  //     //    new webpack.optimize.UglifyJsPlugin({
+  //     //      sourceMap: true,
+  //     //      compress: {
+  //     //        warnings: false
+  //     //      }
+  //     //    }),
+  //     new webpack.LoaderOptionsPlugin({
+  //       minimize: true
+  //     })
+  //   ])
 }
