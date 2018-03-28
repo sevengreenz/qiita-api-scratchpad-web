@@ -34,7 +34,8 @@ module.exports = {
           name: '[name].[ext]?[hash]'
         }
       },
-      { test: /\.html$/, loader: 'html-loader' }
+      { test: /\.html$/, loader: 'html-loader' },
+      { test: /\.css$/, loaders: ['style-loader', 'css-loader'] }
     ]
   },
   resolve: {
