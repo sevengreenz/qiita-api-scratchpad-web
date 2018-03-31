@@ -13,3 +13,4 @@ npm-debug.log
 .env.production
 dist/build.js
 dist/build.js.map
+.s3cfg

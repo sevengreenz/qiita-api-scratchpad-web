@@ -10,7 +10,7 @@
     "build:production": "NODE_ENV=production webpack",
     "dev": "NODE_ENV=development webpack-serve",
     "test": "jest",
-    "deploy": "NODE_ENV=producion npm run build:client && npm run build:server && serverless deploy && serverless s3deploy"
+    "deploy": "npm run build:production && s3-cli --config=./.s3cfg --region='ap-northeast-1' sync dist/ s3://qiita-api-scratchpad-web/"
   },
   "author": "",
   "license": "ISC",
@@ -39,6 +39,7 @@
     "html-webpack-plugin": "^3.1.0",
     "jest": "^22.1.4",
     "koa-connect": "^2.0.1",
+    "s3-cli": "^0.13.0",
     "serverless": "^1.23.0",
     "style-loader": "^0.20.3",
     "ts-jest": "^22.0.1",

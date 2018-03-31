@@ -49,8 +49,8 @@ module.exports = {
   },
   plugins: [
     new Dotenv({
-      // path: DEBUG ? './.env.dev' : './.env.production',
-      path: './.env.dev',
+      path: DEBUG ? './.env.dev' : './.env.production',
+      // path: './.env.dev',
       safe: false
     }),
     new HtmlWebpackPlugin({
