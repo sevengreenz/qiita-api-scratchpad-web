@@ -32,6 +32,7 @@ const fetchSchema = async (context: QiitaContext): Promise<void> => {
 
 const changeTargetResource = (context: QiitaContext, resource: IResource): void => {
   commitTargetResource(context, resource);
+  commitTargetApi(context, resource.links[0]);
 };
 
 const changeTargetApi = (context: QiitaContext, api: IApi): void => {
