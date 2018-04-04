@@ -18,7 +18,6 @@ const cloudQiitaDataStore =
 
     return {
       execute: async (method, url, params): Promise<IApiResponse> => {
-        // const result: IApiResponse = await httpClient.post('/api', { method, url, params })
         const result: IApiResponse = await httpClient.post('/rpc', {
           jsonrpc: '2.0',
           method: 'executeApi',
@@ -34,10 +33,10 @@ const cloudQiitaDataStore =
                 data: response.data.errors.message,
               });
             }
-            const result = JSON.parse(response.data.result);
+
             return Promise.resolve({
-              headers: result.headers,
-              data: result.data,
+              headers: response.data.result.headers,
+              data: response.data.result.data,
             });
           })
           // .catch((error: AxiosError) => {
