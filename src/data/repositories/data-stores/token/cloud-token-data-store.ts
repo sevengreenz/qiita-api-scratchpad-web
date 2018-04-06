@@ -13,7 +13,6 @@ const cloudTokenDataStore = (): ITokenDataStore => {
 
   return {
     issue: async (code): Promise<string> => {
-      // const response = await httpClient.post('/token', params)
       const response = await httpClient.post('/rpc', {
         jsonrpc: '2.0',
         method: 'issueToken',
@@ -23,8 +22,8 @@ const cloudTokenDataStore = (): ITokenDataStore => {
         .then((response: AxiosResponse) => {
           console.log(response.data);
 
-          const result = JSON.parse(response.data.result);
-          return Promise.resolve(result.token);
+          // const result = JSON.parse(response.data.result);
+          return Promise.resolve(response.data.token);
         })
         .catch((error: AxiosError) => {
           console.log(error);
