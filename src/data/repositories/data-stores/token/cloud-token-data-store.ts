@@ -23,7 +23,7 @@ const cloudTokenDataStore = (): ITokenDataStore => {
           console.log(response.data);
 
           // const result = JSON.parse(response.data.result);
-          return Promise.resolve(response.data.token);
+          return Promise.resolve(response.data.result.token);
         })
         .catch((error: AxiosError) => {
           console.log(error);
