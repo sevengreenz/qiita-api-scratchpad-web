@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Index from './views/pages/Index.vue';
+import About from './views/pages/About.vue';
 import Authorized from './views/pages/Authorized.vue';
 import { RouterOptions } from 'vue-router/types/router';
 
@@ -12,14 +13,19 @@ const options: RouterOptions = {
     {
       name: 'index',
       path: '/',
-      component: Index,
+      component: Index
+    },
+    {
+      name: 'about',
+      path: '/about',
+      component: About
     },
     {
       name: 'authorized',
       path: '/authorized',
-      component: Authorized,
-    },
-  ],
+      component: Authorized
+    }
+  ]
 };
 
 const router = new VueRouter(options);
