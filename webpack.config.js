@@ -1,10 +1,10 @@
-var path = require('path')
-var webpack = require('webpack')
-const Dotenv = require('dotenv-webpack')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+var path = require('path');
+var webpack = require('webpack');
+const Dotenv = require('dotenv-webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
-const DEBUG = process.env.NODE_ENV !== 'production'
+const DEBUG = process.env.NODE_ENV !== 'production';
 
 module.exports = {
   mode: process.env.NODE_ENV !== 'production' ? 'development' : 'production',
@@ -17,14 +17,14 @@ module.exports = {
     rules: [
       {
         test: /\.vue$/,
-        loader: 'vue-loader',
+        loader: 'vue-loader'
       },
       {
         test: /\.tsx?$/,
         loader: 'ts-loader',
         exclude: /node_modules/,
         options: {
-          appendTsSuffixTo: [/\.vue$/],
+          appendTsSuffixTo: [/\.vue$/]
         }
       },
       {
@@ -41,7 +41,7 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.js', '.vue', '.json'],
     alias: {
-      'vue$': 'vue/dist/vue.esm.js'
+      vue$: 'vue/dist/vue.esm.js'
     }
   },
   performance: {
@@ -57,18 +57,20 @@ module.exports = {
       filename: 'index.html',
       template: './src/presentation/index.html',
       inject: true,
-      minify: DEBUG ? false : {
-        removeAttributeQuotes: true,
-        collapseWhitespace: true,
-        html5: true,
-        minifyCSS: true,
-        removeComments: true,
-        removeEmptyAttributes: true,
-      }
+      minify: DEBUG
+        ? false
+        : {
+            removeAttributeQuotes: true,
+            collapseWhitespace: true,
+            html5: true,
+            minifyCSS: true,
+            removeComments: true,
+            removeEmptyAttributes: true
+          }
     })
   ],
-  devtool: 'source-map',
-}
+  devtool: 'source-map'
+};
 
 if (!DEBUG) {
   module.exports.optimization = {
@@ -81,23 +83,5 @@ if (!DEBUG) {
         }
       })
     ]
-  }
-  //   module.exports.devtool = 'eval'
-  //   // http://vue-loader.vuejs.org/en/workflow/production.html
-  //   module.exports.plugins = (module.exports.plugins || []).concat([
-  //     new webpack.DefinePlugin({
-  //       'process.env': {
-  //         NODE_ENV: '"production"'
-  //       }
-  //     }),
-  //     //    new webpack.optimize.UglifyJsPlugin({
-  //     //      sourceMap: true,
-  //     //      compress: {
-  //     //        warnings: false
-  //     //      }
-  //     //    }),
-  //     new webpack.LoaderOptionsPlugin({
-  //       minimize: true
-  //     })
-  //   ])
+  };
 }

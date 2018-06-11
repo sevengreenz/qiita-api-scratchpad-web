@@ -4,13 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "style:check": "tslint -e './node_modules/**/*.ts' --project tsconfig.json './**/*.ts'",
-    "style:fix": "tslint -e './node_modules/**/*.ts' --fix --project tsconfig.json './**/*.ts'",
+    "style:check":
+      "tslint -e './node_modules/**/*.ts' --project tsconfig.json './**/*.ts'",
+    "style:fix":
+      "tslint -e './node_modules/**/*.ts' --fix --project tsconfig.json './**/*.ts'",
     "build:dev": "NODE_ENV=development webpack",
     "build:production": "NODE_ENV=production webpack",
     "dev": "npm run build:dev && NODE_ENV=development webpack-serve",
     "test": "jest",
-    "deploy": "npm run build:production && s3-cli --config=./.s3cfg --region='ap-northeast-1' sync dist/ s3://qiita-api-scratchpad-web/"
+    "deploy":
+      "npm run build:production && s3-cli --config=./.s3cfg --region='ap-northeast-1' sync dist/ s3://qiita-api-scratchpad-web/"
   },
   "author": "",
   "license": "ISC",
@@ -63,13 +66,6 @@
       "^.+\\.tsx?$": "ts-jest"
     },
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json",
-      "node"
-    ]
+    "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"]
   }
 }
