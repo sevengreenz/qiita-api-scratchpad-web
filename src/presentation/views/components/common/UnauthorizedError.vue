@@ -2,8 +2,8 @@
   <v-dialog v-model="isShow" persistent>
     <v-card>
       <v-card-title class="headline">認証エラー</v-card-title>
-      <v-card-text>
-        Qiita::TeamのAPI、またはQiitaのGETリクエスト以外のAPIを利用するには、アクセストークンをリクエストに含める必要があります<br> アクセストークンを取得しますか?
+      <v-card-text>Qiita::TeamのAPI、またはQiitaのGETリクエスト以外のAPIを利用するには、アクセストークンをリクエストに含める必要があります
+        <br>アクセストークンを取得しますか?
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
@@ -17,6 +17,7 @@
 <script lang='ts'>
 import Vue from "vue";
 import Component from "vue-class-component";
+import Auth from "../../../../domain/auth";
 
 @Component({
   props: {
@@ -29,7 +30,7 @@ export default class UnauthorizedError extends Vue {
   onDisagree: () => void;
 
   onAgree(): void {
-    window.location.href = process.env.BASE_API_URL + "/authorize";
+    window.location.href = Auth.makeAuthorizationUrl();
   }
 }
 </script>

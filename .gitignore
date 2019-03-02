@@ -10,6 +10,7 @@ dist
 .DS_Store
 npm-debug.log
 
+.env.dev
 .env.production
 dist/build.js
 dist/build.js.map
