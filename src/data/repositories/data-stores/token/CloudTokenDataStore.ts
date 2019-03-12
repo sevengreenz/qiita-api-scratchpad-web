@@ -1,10 +1,10 @@
-import { ITokenDataStore } from './token-data-store-interface';
+import { ITokenDataStore } from './TokenDataStoreInterface';
 import { AxiosResponse, AxiosError } from 'axios';
-import httpClientFactory from '../../../api/http-client-factory';
+import HttpClientFactory from '../../../api/HttpClientFactory';
 import uuid from 'uuid/v4';
 
 const cloudTokenDataStore = (): ITokenDataStore => {
-  const httpClient = httpClientFactory.createHttpClient({
+  const httpClient = HttpClientFactory.createHttpClient({
     baseURL: process.env.BASE_API_URL,
     headers: {
       'Content-Type': 'application/json',

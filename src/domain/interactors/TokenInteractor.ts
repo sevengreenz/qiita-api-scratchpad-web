@@ -1,13 +1,13 @@
-import tokenRepository from '../../data/repositories/token-repository';
+import TokenRepository from '../../data/repositories/TokenRepository';
 
 const tokenInteractor = {
   /**
    * アクセストークン 作成
    */
   create: async (code: string): Promise<string> => {
-    const token = await tokenRepository.issue(code);
+    const token = await TokenRepository.issue(code);
 
-    tokenRepository.update(token);
+    TokenRepository.update(token);
 
     return token;
   },

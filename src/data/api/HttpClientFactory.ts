@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig } from 'axios';
-import ServerError from '../errors/server-error';
-import errorFactory from '../errors/error-factory';
+import ServerError from '../errors/ServerError';
+import ErrorFactory from '../errors/ErrorFactory';
 
 const createHttpClient = (config: AxiosRequestConfig) => {
   const instance = axios.create(config);
@@ -8,8 +8,8 @@ const createHttpClient = (config: AxiosRequestConfig) => {
     response => {
       console.log(response);
 
-      if (response.data.errors !== undefined) {
-        errorFactory.throwError(response);
+      if (response.data.error !== undefined) {
+        ErrorFactory.throwError(response);
       }
 
       return response;

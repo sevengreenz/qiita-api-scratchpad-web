@@ -1,13 +1,13 @@
 <template>
-    <v-layout v-show="isShow" row wrap>
-        <code>{{ result }}</code>
-    </v-layout>
+  <v-layout v-show="isShow" row wrap>
+    <code>{{ result }}</code>
+  </v-layout>
 </template>
 
 <script lang='ts'>
 import Vue from "vue";
 import Component from "vue-class-component";
-import qiitaDomain, { IApiResponse } from "../../../../domain/qiita";
+import qiitaDomain, { IApiResponse } from "../../../../domain/Qiita";
 
 @Component({
   props: {
@@ -18,7 +18,7 @@ export default class ApiResult extends Vue {
   result: IApiResponse;
 
   get isShow(): boolean {
-    return ! qiitaDomain.isEmptyApiResponse(this.result);
+    return !qiitaDomain.isEmptyApiResponse(this.result);
   }
 }
 </script>

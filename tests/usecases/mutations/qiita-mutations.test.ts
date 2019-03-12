@@ -1,12 +1,12 @@
-import qiitaMutations from '../../../src/presentation/store/qiita/mutations';
-import qiitaStore, { IQiitaState } from '../../../src/presentation/store/qiita/state';
-import { IApiResponse } from '../../../src/domain/qiita';
+import QiitaMutations from '../../../src/presentation/store/qiita/mutations';
+import QiitaStore, { IQiitaState } from '../../../src/presentation/store/qiita/state';
+import { IApiResponse } from '../../../src/domain/Qiita';
 
 describe('qiita mutations', () => {
   let state: IQiitaState;
 
   beforeEach(() => {
-    state = qiitaStore.createInitialState();
+    state = QiitaStore.createInitialState();
   });
 
   it('setApiResponse', () => {
@@ -15,7 +15,7 @@ describe('qiita mutations', () => {
       data: 'data',
     };
 
-    qiitaMutations.setApiResponse(state, apiResponse);
+    QiitaMutations.setApiResponse(state, apiResponse);
 
     expect(state.apiResponse).toBe(apiResponse);
   });

@@ -1,10 +1,10 @@
-import { ISchemaDataStore } from './schema-data-store-interface';
+import { ISchemaDataStore } from './SchemaDataStoreInterface';
 import { AxiosResponse } from 'axios';
-import { IResource } from '../../../../domain/qiita';
-import httpClientFactory from '../../../api/http-client-factory';
+import { IResource } from '../../../../domain/Qiita';
+import HttpClientFactory from '../../../api/HttpClientFactory';
 
 const cloudSchemaDataStore = (): ISchemaDataStore => {
-  const httpClient = httpClientFactory.createHttpClient({
+  const httpClient = HttpClientFactory.createHttpClient({
     baseURL: process.env.QIITA_URL,
   });
 

@@ -1,4 +1,4 @@
-import { IResource } from '../../domain/qiita';
+import { IResource } from '../Qiita';
 
 /**
  * 外部 API インターフェース

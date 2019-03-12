@@ -1,4 +1,4 @@
-import { IExecutedDataStore } from './executed-data-store-interface';
+import { IExecutedDataStore } from './ExecutedDataStoreInterface';
 
 const localExecutedDataStore =
   (): IExecutedDataStore => {

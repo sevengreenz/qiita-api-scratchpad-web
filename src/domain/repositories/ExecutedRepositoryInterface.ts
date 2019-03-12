@@ -1,4 +1,4 @@
-import { IExecuteApi } from '../qiita';
+import { IExecuteApi } from '../Qiita';
 
 export interface IExecutedRepository {
   getExecuted: () => IExecuteApi | null;

@@ -4,11 +4,32 @@
       <v-card-text>
         <v-container fluid>
           <v-layout row wrap>
-            <v-select v-bind:items="resources" v-model="targetResource" v-on:change="changeResource($event)" item-text="title" item-value="title" return-object :hint="`${targetResource.description}`" persistent-hint label="Resource" bottom>
-            </v-select>
+            <v-select
+              v-bind:items="resources"
+              v-model="targetResource"
+              v-on:change="changeResource($event)"
+              item-text="title"
+              item-value="title"
+              return-object
+              :hint="`${targetResource.description}`"
+              persistent-hint
+              label="Resource"
+              bottom
+            ></v-select>
           </v-layout>
           <v-layout row wrap>
-            <v-select v-bind:items="targetResource.links" v-model="targetApi" item-text="title" item-value="title" v-on:change="changeApi($event)" return-object :hint="`${targetApi.description}`" persistent-hint label="API" bottom></v-select>
+            <v-select
+              v-bind:items="targetResource.links"
+              v-model="targetApi"
+              item-text="title"
+              item-value="title"
+              v-on:change="changeApi($event)"
+              return-object
+              :hint="`${targetApi.description}`"
+              persistent-hint
+              label="API"
+              bottom
+            ></v-select>
           </v-layout>
 
           <api-url-param :params="urlParams"></api-url-param>
@@ -25,30 +46,33 @@
 </template>
 
 <script lang='ts'>
-import Vue from 'vue';
-import Component from 'vue-class-component';
-import ApiUrlParam from '../components/qiita/ApiUrlParam.vue';
-import ApiDataParam from '../components/qiita/ApiDataParam.vue';
-import ApiResult from '../components/qiita/ApiResult.vue';
-import { IResource, IApi, IApiParams, IUrlParams } from '../../../domain/qiita';
-import * as qiitaStore from '../../store/qiita';
-import UnauthorizedError from '../../../data/errors/unauthorized-error';
-import UnauthorizedErrorComponent from '../components/common/UnauthorizedError.vue';
+import Vue from "vue";
+import Component from "vue-class-component";
+import ApiUrlParam from "../components/qiita/ApiUrlParam.vue";
+import ApiDataParam from "../components/qiita/ApiDataParam.vue";
+import ApiResult from "../components/qiita/ApiResult.vue";
+import { IResource, IApi, IApiParams, IUrlParams } from "../../../domain/Qiita";
+import * as qiitaStore from "../../store/qiita";
+import UnauthorizedError from "../../../data/errors/UnauthorizedError";
+import UnauthorizedErrorComponent from "../components/common/UnauthorizedError.vue";
 
 @Component({
   components: {
-    'api-url-param': ApiUrlParam,
-    'api-data-param': ApiDataParam,
-    'unauthorized-error': UnauthorizedErrorComponent,
-    'api-result': ApiResult
+    "api-url-param": ApiUrlParam,
+    "api-data-param": ApiDataParam,
+    "unauthorized-error": UnauthorizedErrorComponent,
+    "api-result": ApiResult
   },
   props: {},
   metaInfo: {
-    title: 'Qiita API Scratchpad',
+    title: "Qiita API Scratchpad",
     meta: [
-      { charset: 'utf-8' },
-      { name: 'description', content: 'Qiita API を簡単に試せるツールです' },
-      { name: 'keywords', content: 'Qiita,キータ,デベロッパー,api,developer,test' }
+      { charset: "utf-8" },
+      { name: "description", content: "Qiita API を簡単に試せるツールです" },
+      {
+        name: "keywords",
+        content: "Qiita,キータ,デベロッパー,api,developer,test"
+      }
     ]
   }
 })

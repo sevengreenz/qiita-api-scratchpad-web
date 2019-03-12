@@ -1,4 +1,4 @@
-import { ITokenDataStore } from './token-data-store-interface';
+import { ITokenDataStore } from './TokenDataStoreInterface';
 
 const localTokenDataStore = (): ITokenDataStore => {
   const key = 'access_token';

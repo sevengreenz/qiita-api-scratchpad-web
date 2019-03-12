@@ -1,4 +1,4 @@
-import { IResource, IApi, IApiResponse, IUrlParams } from '../../../domain/qiita';
+import { IResource, IApi, IApiResponse, IUrlParams } from '../../../domain/Qiita';
 import { IQiitaState } from './state';
 
 const getResources = (state: IQiitaState): IResource[] => {

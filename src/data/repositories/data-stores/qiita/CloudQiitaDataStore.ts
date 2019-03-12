@@ -1,16 +1,16 @@
-import { IQiitaDataStore } from './qiita-data-store-interface';
+import { IQiitaDataStore } from './QiitaDataStoreInterface';
 import { AxiosResponse } from 'axios';
-import { IApiResponse } from '../../../../domain/qiita';
-import tokenRepository from '../../token-repository';
-import httpClientFactory from '../../../api/http-client-factory';
+import { IApiResponse } from '../../../../domain/Qiita';
+import TokenRepository from '../../TokenRepository';
+import HttpClientFactory from '../../../api/HttpClientFactory';
 import uuid from 'uuid/v4';
 
 const cloudQiitaDataStore = (): IQiitaDataStore => {
-  const httpClient = httpClientFactory.createHttpClient({
+  const httpClient = HttpClientFactory.createHttpClient({
     baseURL: process.env.BASE_API_URL,
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${tokenRepository.find() || ''}`
+      Authorization: `Bearer ${TokenRepository.find() || ''}`
     }
   });
 

@@ -1,8 +1,8 @@
 jest.mock('../../../data/repositories/data-stores/token/token-data-store-factory');
 
-import tokenRepository from '../../../src/data/repositories/token-repository';
-import { ITokenDataStore } from '../../../src/data/repositories/data-stores/token/token-data-store-interface';
-import dataStoreFactory from '../../../src/data/repositories/data-stores/token/token-data-store-factory';
+import TokenRepository from '../../../src/data/repositories/TokenRepository';
+import { ITokenDataStore } from '../../../src/data/repositories/data-stores/token/TokenDataStoreInterface';
+import DataStoreFactory from '../../../src/data/repositories/data-stores/token/TokenDataStoreFactory';
 
 describe('tokenRepository', () => {
   const update = jest.fn(() => { });
@@ -17,36 +17,36 @@ describe('tokenRepository', () => {
     find: () => 'found_token',
   };
 
-  dataStoreFactory.createCloudDataStore = jest.fn(() => mockTokenDataStore);
-  dataStoreFactory.createLocalDataStore = jest.fn(() => mockTokenDataStore);
+  DataStoreFactory.createCloudDataStore = jest.fn(() => mockTokenDataStore);
+  DataStoreFactory.createLocalDataStore = jest.fn(() => mockTokenDataStore);
 
   describe('issue', () => {
     const expected = 'token';
-    const result = tokenRepository.issue(expected);
+    const result = TokenRepository.issue(expected);
 
     it('should return expected', () => {
       expect(result).resolves.toBe(expected);
     });
 
     it('should createCloudDataStore called', () => {
-      expect(dataStoreFactory.createCloudDataStore).toBeCalled();
+      expect(DataStoreFactory.createCloudDataStore).toBeCalled();
     });
   });
 
   describe('find', () => {
-    const result = tokenRepository.find();
+    const result = TokenRepository.find();
 
     it('should return expected', () => {
       expect(result).toBe('found_token');
     });
 
     it('should createLocalDataStore called', () => {
-      expect(dataStoreFactory.createLocalDataStore).toBeCalled();
+      expect(DataStoreFactory.createLocalDataStore).toBeCalled();
     });
   });
 
   describe('update', () => {
-    tokenRepository.update('token');
+    TokenRepository.update('token');
 
     it('should be called update function', () => {
       expect(update).toBeCalled();

@@ -1,4 +1,4 @@
-import { IExecuteApi } from '../../../../domain/qiita';
+import { IExecuteApi } from '../../../../domain/Qiita';
 
 export interface IExecutedDataStore {
   getExecuted: () => IExecuteApi | null;

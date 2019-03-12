@@ -1,15 +1,15 @@
-import executedDataStoreFactory from './data-stores/executed/executed-data-store-factory';
-import { IExecutedRepository } from '../../domain/repositories/executed-repository-interface';
+import ExecutedDataStoreFactory from './data-stores/executed/ExecutedDataStoreFactory';
+import { IExecutedRepository } from '../../domain/repositories/ExecutedRepositoryInterface';
 
 const executedRepository: IExecutedRepository = {
   getExecuted: () => {
-    return executedDataStoreFactory
+    return ExecutedDataStoreFactory
       .createLocalDataStore()
       .getExecuted();
   },
 
   setExecuted: (executed) => {
-    executedDataStoreFactory
+    ExecutedDataStoreFactory
       .createLocalDataStore()
       .setExecuted(executed);
   },

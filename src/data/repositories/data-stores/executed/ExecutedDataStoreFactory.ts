@@ -1,9 +1,9 @@
-import localExecutedDataStore from './local-executed-data-store';
-import { IExecutedDataStore } from './executed-data-store-interface';
+import LocalExecutedDataStore from './LocalExecutedDataStore';
+import { IExecutedDataStore } from './ExecutedDataStoreInterface';
 
 const executedDataStoreFactory = {
   createLocalDataStore: (): IExecutedDataStore => {
-    return localExecutedDataStore();
+    return LocalExecutedDataStore();
   },
 
   createCloudDataStore: (): IExecutedDataStore => {

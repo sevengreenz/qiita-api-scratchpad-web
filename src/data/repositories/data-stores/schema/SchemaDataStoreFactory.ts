@@ -1,5 +1,5 @@
-import cloudSchemaDataStore from './cloud-schema-data-store';
-import { ISchemaDataStore } from './schema-data-store-interface';
+import CloudSchemaDataStore from './CloudSchemaDataStore';
+import { ISchemaDataStore } from './SchemaDataStoreInterface';
 
 const schemaDataStoreFactory = {
   createLocalDataStore: (): ISchemaDataStore => {
@@ -7,7 +7,7 @@ const schemaDataStoreFactory = {
   },
 
   createCloudDataStore: (): ISchemaDataStore => {
-    return cloudSchemaDataStore();
+    return CloudSchemaDataStore();
   },
 };
 

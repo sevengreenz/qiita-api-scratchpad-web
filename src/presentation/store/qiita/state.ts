@@ -1,4 +1,4 @@
-import { IApiResponse, IResource, IApi, IUrlParams } from '../../../domain/qiita';
+import { IApiResponse, IResource, IApi, IUrlParams } from '../../../domain/Qiita';
 
 /**
  * Qiita State インターフェース

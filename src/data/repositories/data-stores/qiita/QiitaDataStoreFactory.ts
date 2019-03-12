@@ -1,5 +1,5 @@
-import cloudQiitaDataStore from './cloud-qiita-data-store';
-import { IQiitaDataStore } from './qiita-data-store-interface';
+import CloudQiitaDataStore from './CloudQiitaDataStore';
+import { IQiitaDataStore } from './QiitaDataStoreInterface';
 
 
 const qiitaDataStoreFactory = {
@@ -8,7 +8,7 @@ const qiitaDataStoreFactory = {
   },
 
   createCloudDataStore: (): IQiitaDataStore => {
-    return cloudQiitaDataStore();
+    return CloudQiitaDataStore();
   },
 };
 

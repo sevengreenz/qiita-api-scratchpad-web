@@ -7,19 +7,19 @@ import {
   getTargetResource,
   getTargetApi,
 } from './qiita';
-import { IApiParams, IApi, IResource, IApiResponse } from '../../../domain/qiita';
-import schemaInteractor from '../../../domain/interactors/schema-interactor';
-import qiitaInteractor from '../../../domain/interactors/qiita-interactor';
-import executedInteractor from '../../../domain/interactors/executed-interactor';
+import { IApiParams, IApi, IResource, IApiResponse } from '../../../domain/Qiita';
+import SchemaInteractor from '../../../domain/interactors/SchemaInteractor';
+import QiitaInteractor from '../../../domain/interactors/QiitaInteractor';
+import ExecutedInteractor from '../../../domain/interactors/ExecutedInteractor';
 
 const fetchSchema = async (context: QiitaContext): Promise<void> => {
-  await schemaInteractor
+  await SchemaInteractor
     .fetch()
     .then((resources: IResource[]) => {
       commitResources(context, resources);
 
       // session に保存されていた場合、targetResource にセットする
-      const executed = executedInteractor.getLastExecuteApi();
+      const executed = ExecutedInteractor.getLastExecuteApi();
       if (executed !== null) {
         commitTargetResource(context, executed.resource);
         commitTargetApi(context, executed.api);
@@ -45,7 +45,7 @@ const changeTargetApi = (context: QiitaContext, api: IApi): void => {
  * @param {QiitaContext} context
  */
 const executeApi = async (context: QiitaContext, params: IApiParams): Promise<void> => {
-  await qiitaInteractor
+  await QiitaInteractor
     .executeApi({
       resource: getTargetResource(context),
       api: getTargetApi(context),

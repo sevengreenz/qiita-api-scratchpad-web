@@ -1,4 +1,4 @@
-import qiitaFunc from '../../../domain/qiita';
+import qiitaFunc from '../../../domain/Qiita';
 import qiitaState from './state';
 var setResources = function (state, resources) {
     state.resources = resources;
