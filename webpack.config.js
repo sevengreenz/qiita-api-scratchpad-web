@@ -17,7 +17,21 @@ module.exports = {
     rules: [
       {
         test: /\.vue$/,
-        loader: 'vue-loader'
+        loader: 'vue-loader',
+        options: {
+          loaders: {
+            ts: [
+              {
+                loader: 'ts-loader',
+                options: {
+                  appendTsSuffixTo: [/\.vue$/]
+                }
+              }]
+          },
+          options: {
+            esModule: true
+          }
+        }
       },
       {
         test: /\.tsx?$/,
@@ -60,13 +74,13 @@ module.exports = {
       minify: DEBUG
         ? false
         : {
-            removeAttributeQuotes: true,
-            collapseWhitespace: true,
-            html5: true,
-            minifyCSS: true,
-            removeComments: true,
-            removeEmptyAttributes: true
-          }
+          removeAttributeQuotes: true,
+          collapseWhitespace: true,
+          html5: true,
+          minifyCSS: true,
+          removeComments: true,
+          removeEmptyAttributes: true
+        }
     })
   ],
   devtool: 'source-map'

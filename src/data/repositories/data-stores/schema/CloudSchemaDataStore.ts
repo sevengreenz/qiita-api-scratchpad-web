@@ -12,7 +12,7 @@ const cloudSchemaDataStore = (): ISchemaDataStore => {
     fetch: async (): Promise<IResource[]> => {
       return await httpClient
         .get('/schema?local=ja')
-        .then((response: AxiosResponse) => Object.values(response.data.properties));
+        .then((response: AxiosResponse) => Object.values(response.data.properties as IResource));
     },
   };
 };
