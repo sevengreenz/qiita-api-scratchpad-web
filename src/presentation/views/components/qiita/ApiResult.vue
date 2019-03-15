@@ -5,17 +5,12 @@
 </template>
 
 <script lang='ts'>
-import Vue from "vue";
-import Component from "vue-class-component";
+import { Component, Prop, Vue } from "vue-property-decorator";
 import qiitaDomain, { IApiResponse } from "../../../../domain/Qiita";
 
-@Component({
-  props: {
-    result: Object
-  }
-})
+@Component
 export default class ApiResult extends Vue {
-  result: IApiResponse;
+  @Prop(Object) readonly result!: IApiResponse;
 
   get isShow(): boolean {
     return !qiitaDomain.isEmptyApiResponse(this.result);

@@ -21,16 +21,11 @@
 </template>
 
 <script lang='ts'>
-import Vue from "vue";
-import Component from "vue-class-component";
+import { Component, Prop, Vue } from "vue-property-decorator";
 import { IUrlParams } from "../../../../domain/Qiita";
 
-@Component({
-  props: {
-    params: Object
-  }
-})
+@Component
 export default class ApiUrlParam extends Vue {
-  params: IUrlParams;
+  @Prop(Object) readonly params!: IUrlParams;
 }
 </script>

@@ -15,19 +15,13 @@
 </template>
 
 <script lang='ts'>
-import Vue from "vue";
-import Component from "vue-class-component";
+import { Vue, Component, Prop } from "vue-property-decorator";
 import Auth from "../../../../domain/auth";
 
-@Component({
-  props: {
-    isShow: Boolean,
-    onDisagree: Function
-  }
-})
+@Component
 export default class UnauthorizedError extends Vue {
-  isShow: boolean;
-  onDisagree: () => void;
+  @Prop(Boolean) readonly isShow!: boolean;
+  @Prop(Function) readonly onDisagree!: () => void;
 
   onAgree(): void {
     window.location.href = Auth.makeAuthorizationUrl();

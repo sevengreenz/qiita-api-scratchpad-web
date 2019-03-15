@@ -31,19 +31,13 @@
 </template>
 
 <script lang='ts'>
-import Vue from "vue";
-import Component from "vue-class-component";
+import { Vue, Component, Prop } from "vue-property-decorator";
 import { IApi } from "../../../../domain/Qiita";
 
-@Component({
-  props: {
-    api: Object,
-    params: Object
-  }
-})
+@Component
 export default class ApiDataParam extends Vue {
-  api: IApi;
-  params: Object;
+  @Prop(Object) readonly api!: IApi;
+  @Prop(Object) readonly params!: Object;
 
   get isShow(): boolean {
     return this.api.hasOwnProperty("schema");

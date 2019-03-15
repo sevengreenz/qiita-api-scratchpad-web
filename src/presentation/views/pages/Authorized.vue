@@ -3,16 +3,14 @@
 </template>
 
 <script lang='ts'>
-import Vue from "vue";
-import Component from "vue-class-component";
+import { Component, Vue } from "vue-property-decorator";
 import TokenInteractor from "../../../domain/interactors/TokenInteractor";
 
 @Component
 export default class Authorized extends Vue {
   beforeCreate() {
-    TokenInteractor.create(this.$route.query.code).then(() =>
-      this.$router.push("/")
-    );
+    const code = this.$route.query.code as string;
+    TokenInteractor.create(code).then(() => this.$router.push("/"));
   }
 }
 </script>
