@@ -52,7 +52,7 @@ import ApiUrlParam from "../components/qiita/ApiUrlParam.vue";
 import ApiDataParam from "../components/qiita/ApiDataParam.vue";
 import ApiResult from "../components/qiita/ApiResult.vue";
 import { IResource, IApi, IApiParams, IUrlParams } from "../../../domain/Qiita";
-import * as qiitaStore from "../../store/qiita";
+import * as QiitaStore from "../../store/qiita";
 import UnauthorizedError from "../../../data/errors/UnauthorizedError";
 import UnauthorizedErrorComponent from "../components/common/UnauthorizedError.vue";
 
@@ -80,31 +80,31 @@ export default class Index extends Vue {
   hasError: boolean = false;
 
   async created() {
-    qiitaStore.fetchSchema(this.$store);
+    QiitaStore.fetchSchema(this.$store);
   }
 
   get resources(): IResource[] {
-    return qiitaStore.getResources(this.$store);
+    return QiitaStore.getResources(this.$store);
   }
 
   get targetResource(): IResource {
-    return qiitaStore.getTargetResource(this.$store);
+    return QiitaStore.getTargetResource(this.$store);
   }
 
   get targetApi(): IApi {
-    return qiitaStore.getTargetApi(this.$store);
+    return QiitaStore.getTargetApi(this.$store);
   }
 
   get urlParams(): IUrlParams {
-    return qiitaStore.getUrlParams(this.$store);
+    return QiitaStore.getUrlParams(this.$store);
   }
 
   get dataParams(): object {
-    return qiitaStore.getDataParams(this.$store);
+    return QiitaStore.getDataParams(this.$store);
   }
 
   get result() {
-    return qiitaStore.getApiResponse(this.$store);
+    return QiitaStore.getApiResponse(this.$store);
   }
 
   /**
@@ -113,7 +113,7 @@ export default class Index extends Vue {
    * @param IResource $event
    */
   changeResource($event: IResource) {
-    qiitaStore.changeTargetResource(this.$store, $event);
+    QiitaStore.changeTargetResource(this.$store, $event);
   }
 
   /**
@@ -122,7 +122,7 @@ export default class Index extends Vue {
    * @param IApi $event
    */
   changeApi($event: IApi): void {
-    qiitaStore.changeTargetApi(this.$store, $event);
+    QiitaStore.changeTargetApi(this.$store, $event);
   }
 
   async execute(): Promise<void> {
@@ -133,7 +133,7 @@ export default class Index extends Vue {
       dataParams: this.dataParams
     };
 
-    await qiitaStore.executeApi(this.$store, apiParams).catch((e: Error) => {
+    await QiitaStore.executeApi(this.$store, apiParams).catch((e: Error) => {
       if (e instanceof UnauthorizedError) {
         this.hasError = true;
       }
