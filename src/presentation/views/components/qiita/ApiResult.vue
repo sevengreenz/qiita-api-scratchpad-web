@@ -5,8 +5,8 @@
 </template>
 
 <script lang='ts'>
-import { Component, Prop, Vue } from "vue-property-decorator";
-import Qiita, { IApiResponse } from "../../../../domain/Qiita";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+import Qiita, { IApiResponse } from '../../../../domain/Qiita';
 
 @Component
 export default class ApiResult extends Vue {

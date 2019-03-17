@@ -31,8 +31,8 @@
 </template>
 
 <script lang='ts'>
-import { Vue, Component, Prop } from "vue-property-decorator";
-import { IApi } from "../../../../domain/Qiita";
+import { Vue, Component, Prop } from 'vue-property-decorator';
+import { IApi } from '../../../../domain/Qiita';
 
 @Component
 export default class ApiDataParam extends Vue {
@@ -40,7 +40,7 @@ export default class ApiDataParam extends Vue {
   @Prop(Object) readonly params!: Object;
 
   get isShow(): boolean {
-    return this.api.hasOwnProperty("schema");
+    return this.api.hasOwnProperty('schema');
   }
 }
 </script>

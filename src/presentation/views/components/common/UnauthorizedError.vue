@@ -15,8 +15,8 @@
 </template>
 
 <script lang='ts'>
-import { Vue, Component, Prop } from "vue-property-decorator";
-import Auth from "../../../../domain/auth";
+import { Vue, Component, Prop } from 'vue-property-decorator';
+import Auth from '../../../../domain/auth';
 
 @Component
 export default class UnauthorizedError extends Vue {

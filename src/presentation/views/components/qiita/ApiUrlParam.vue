@@ -21,8 +21,8 @@
 </template>
 
 <script lang='ts'>
-import { Component, Prop, Vue } from "vue-property-decorator";
-import { IUrlParams } from "../../../../domain/Qiita";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+import { IUrlParams } from '../../../../domain/Qiita';
 
 @Component
 export default class ApiUrlParam extends Vue {
