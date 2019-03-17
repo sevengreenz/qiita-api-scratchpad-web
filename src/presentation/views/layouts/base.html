@@ -2,28 +2,34 @@
     <v-app>
         <v-navigation-drawer fixed v-model="drawer" app>
             <v-list dense>
-                <v-list-tile @click="onHome">
+                <v-list-tile>
                     <v-list-tile-action>
                         <v-icon>home</v-icon>
                     </v-list-tile-action>
                     <v-list-tile-content>
-                        <v-list-tile-title>Home</v-list-tile-title>
+                        <router-link :to="homeHref">
+                            <v-list-tile-title>Home</v-list-tile-title>
+                        </router-link>
                     </v-list-tile-content>
                 </v-list-tile>
-                <v-list-tile @click="onAbout">
+                <v-list-tile>
                     <v-list-tile-action>
                         <v-icon>info</v-icon>
                     </v-list-tile-action>
                     <v-list-tile-content>
-                        <v-list-tile-title>About</v-list-tile-title>
+                        <router-link :to="aboutHref">
+                            <v-list-tile-title>About</v-list-tile-title>
+                        </router-link>
                     </v-list-tile-content>
                 </v-list-tile>
-                <v-list-tile @click="onContacts">
+                <v-list-tile>
                     <v-list-tile-action>
                         <v-icon>contact_mail</v-icon>
                     </v-list-tile-action>
                     <v-list-tile-content>
-                        <v-list-tile-title>Contacts</v-list-tile-title>
+                        <a :href="contactsHref">
+                            <v-list-tile-title>Contacts</v-list-tile-title>
+                        </a>
                     </v-list-tile-content>
                 </v-list-tile>
             </v-list>
