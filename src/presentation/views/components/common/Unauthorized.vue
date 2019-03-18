@@ -19,7 +19,7 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 import Auth from '../../../../domain/auth';
 
 @Component
-export default class UnauthorizedError extends Vue {
+export default class Unauthorized extends Vue {
   @Prop(Boolean) readonly isShow!: boolean;
   @Prop(Function) readonly onDisagree!: () => void;
 
