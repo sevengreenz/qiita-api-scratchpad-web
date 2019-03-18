@@ -4,32 +4,10 @@
       <v-card-text>
         <v-container fluid>
           <v-layout row wrap>
-            <v-select
-              v-bind:items="resources"
-              v-model="targetResource"
-              v-on:change="changeResource($event)"
-              item-text="title"
-              item-value="title"
-              return-object
-              :hint="`${targetResource.description}`"
-              persistent-hint
-              label="Resource"
-              bottom
-            ></v-select>
+            <resource-select></resource-select>
           </v-layout>
           <v-layout row wrap>
-            <v-select
-              v-bind:items="targetResource.links"
-              v-model="targetApi"
-              item-text="title"
-              item-value="title"
-              v-on:change="changeApi($event)"
-              return-object
-              :hint="`${targetApi.description}`"
-              persistent-hint
-              label="API"
-              bottom
-            ></v-select>
+            <api-select></api-select>
           </v-layout>
 
           <api-url-param :params="urlParams"></api-url-param>
@@ -37,6 +15,7 @@
           <api-data-param :api="targetApi" :params="dataParams"></api-data-param>
 
           <v-btn color="primary" dark v-on:click="execute">Exec</v-btn>
+
           <unauthorized :isShow="hasError" :onDisagree="hideError"></unauthorized>
           <api-result :result="result"></api-result>
         </v-container>
@@ -48,21 +27,20 @@
 <script lang='ts'>
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import ResourceSelect from '../qiita/ResourceSelect.vue';
+import ApiSelect from '../qiita/ApiSelect.vue';
 import ApiUrlParam from '../qiita/ApiUrlParam.vue';
 import ApiDataParam from '../qiita/ApiDataParam.vue';
 import ApiResult from '../qiita/ApiResult.vue';
-import {
-  IResource,
-  IApi,
-  IApiParams,
-  IUrlParams
-} from '../../../../domain/Qiita';
+import { IApi, IApiParams, IUrlParams } from '../../../../domain/Qiita';
 import * as QiitaStore from '../../../store/qiita';
 import UnauthorizedError from '../../../../data/errors/UnauthorizedError';
 import Unauthorized from '../common/Unauthorized.vue';
 
 @Component({
   components: {
+    ResourceSelect,
+    ApiSelect,
     ApiUrlParam,
     ApiDataParam,
     Unauthorized,
@@ -75,14 +53,6 @@ export default class Index extends Vue {
 
   async created() {
     QiitaStore.fetchSchema(this.$store);
-  }
-
-  get resources(): IResource[] {
-    return QiitaStore.getResources(this.$store);
-  }
-
-  get targetResource(): IResource {
-    return QiitaStore.getTargetResource(this.$store);
   }
 
   get targetApi(): IApi {
@@ -99,24 +69,6 @@ export default class Index extends Vue {
 
   get result() {
     return QiitaStore.getApiResponse(this.$store);
-  }
-
-  /**
-   * リソース変更イベント
-   *
-   * @param IResource $event
-   */
-  changeResource($event: IResource) {
-    QiitaStore.changeTargetResource(this.$store, $event);
-  }
-
-  /**
-   * API 変更イベント
-   *
-   * @param IApi $event
-   */
-  changeApi($event: IApi): void {
-    QiitaStore.changeTargetApi(this.$store, $event);
   }
 
   async execute(): Promise<void> {
