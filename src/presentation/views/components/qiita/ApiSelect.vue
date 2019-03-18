@@ -8,7 +8,6 @@
     :hint="`${api.description}`"
     persistent-hint
     label="API"
-    bottom
   ></v-select>
 </template>
 

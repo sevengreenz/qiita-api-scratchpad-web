@@ -8,7 +8,6 @@
     :hint="`${resource.description}`"
     persistent-hint
     label="Resource"
-    bottom
   ></v-select>
 </template>
 
