@@ -8,7 +8,7 @@
     "style:fix": "tslint -e './node_modules/**/*.ts' --fix --project tsconfig.json './**/*.ts'",
     "build:dev": "NODE_ENV=development webpack",
     "build:production": "NODE_ENV=production webpack",
-    "dev": "npm run build:dev && NODE_ENV=development webpack-serve",
+    "dev": "npm run build:dev && NODE_ENV=development webpack-dev-server",
     "test": "jest",
     "deploy": "npm run build:production && s3-cli --config=./.s3cfg --region='ap-northeast-1' sync dist/ s3://qiita-api-scratchpad-web/"
   },
@@ -57,7 +57,7 @@
     "vuex-typescript": "^3.0.2",
     "webpack": "^4.3.0",
     "webpack-cli": "^3.2.3",
-    "webpack-serve": "^0.2.0"
+    "webpack-dev-server": "^3.2.1"
   },
   "jest": {
     "transform": {
