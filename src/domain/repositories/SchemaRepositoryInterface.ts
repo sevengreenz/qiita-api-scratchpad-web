@@ -1,4 +1,4 @@
-import { IResource } from '../Qiita';
+import { IQiitaSchema } from '../Qiita';
 
 /**
  * 外部 API インターフェース
@@ -11,5 +11,5 @@ export interface ISchemaRepository {
   /**
    * Qiita API Schema を取得
    */
-  fetch: () => Promise<IResource[]>;
+  fetch: () => Promise<IQiitaSchema>;
 }

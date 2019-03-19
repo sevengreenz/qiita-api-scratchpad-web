@@ -1,8 +1,12 @@
-import { IResource, IApi, IApiResponse, IUrlParams } from '../../../domain/Qiita';
+import { IResource, IApi, IApiResponse, IUrlParams, IQiitaSchema } from '../../../domain/Qiita';
 import { IQiitaState } from './state';
 
+const getSchema = (state: IQiitaState): IQiitaSchema => {
+  return state.schema;
+};
+
 const getResources = (state: IQiitaState): IResource[] => {
-  return state.resources;
+  return Object.values(state.schema.properties);
 };
 
 const getTargetResource = (state: IQiitaState): IResource => {
@@ -26,6 +30,7 @@ const getApiResponse = (state: IQiitaState): IApiResponse => {
 };
 
 export default {
+  getSchema,
   getResources,
   getTargetResource,
   getTargetApi,

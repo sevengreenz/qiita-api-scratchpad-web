@@ -1,5 +1,5 @@
-import { IResource } from '../../../../domain/Qiita';
+import { IQiitaSchema } from '../../../../domain/Qiita';
 
 export interface ISchemaDataStore {
-  fetch: () => Promise<IResource[]>;
+  fetch: () => Promise<IQiitaSchema>;
 }

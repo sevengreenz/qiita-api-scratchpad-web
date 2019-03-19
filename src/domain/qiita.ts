@@ -5,6 +5,13 @@ export interface IQiitaSchemaResponse {
   body: string;
 }
 
+export interface IQiitaSchema {
+  description: string;
+  properties: {
+    [key: string]: IResource;
+  }
+}
+
 export interface IResource {
   title: string;
   description: string;

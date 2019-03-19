@@ -1,8 +1,8 @@
-import Qiita, { IResource, IApi, IApiResponse } from '../../../domain/Qiita';
+import Qiita, { IResource, IApi, IApiResponse, IQiitaSchema } from '../../../domain/Qiita';
 import qiitaState, { IQiitaState } from './state';
 
-const setResources = (state: IQiitaState, resources: IResource[]) => {
-  state.resources = resources;
+const setSchema = (state: IQiitaState, schema: IQiitaSchema) => {
+  state.schema = schema;
 };
 
 const setTargetResource = (state: IQiitaState, resource: IResource) => {
@@ -29,7 +29,7 @@ const setApiResponse = (state: IQiitaState, apiReponse: IApiResponse) => {
 };
 
 export default {
-  setResources,
+  setSchema,
   setTargetResource,
   setTargetApi,
   setApiResponse,

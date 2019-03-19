@@ -24,6 +24,7 @@ const { commit, read, dispatch } =
   getStoreAccessors<IQiitaState, IRootState>('qiita');
 
 
+export const getSchema = read(qiita.getters.getSchema);
 export const getResources = read(qiita.getters.getResources);
 export const getTargetResource = read(qiita.getters.getTargetResource);
 export const getTargetApi = read(qiita.getters.getTargetApi);
@@ -36,7 +37,7 @@ export const changeTargetResource = dispatch(qiita.actions.changeTargetResource)
 export const changeTargetApi = dispatch(qiita.actions.changeTargetApi);
 export const executeApi = dispatch(qiita.actions.executeApi);
 
-export const commitResources = commit(qiita.mutations.setResources);
+export const commitSchema = commit(qiita.mutations.setSchema);
 export const commitTargetResource = commit(qiita.mutations.setTargetResource);
 export const commitTargetApi = commit(qiita.mutations.setTargetApi);
 export const commitApiResponse = commit(qiita.mutations.setApiResponse);
