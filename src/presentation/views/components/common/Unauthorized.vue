@@ -16,7 +16,7 @@
 
 <script lang='ts'>
 import { Vue, Component, Prop } from 'vue-property-decorator';
-import Auth from '../../../../domain/auth';
+import AuthInteractor from '../../../../domain/interactors/AuthInteractor';
 
 @Component
 export default class Unauthorized extends Vue {
@@ -24,7 +24,7 @@ export default class Unauthorized extends Vue {
   @Prop(Function) readonly onDisagree!: () => void;
 
   onAgree(): void {
-    window.location.href = Auth.makeAuthorizationUrl();
+    window.location.href = AuthInteractor.makeAuthorizationUrl();
   }
 }
 </script>

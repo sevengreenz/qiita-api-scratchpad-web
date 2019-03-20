@@ -10,7 +10,8 @@ import TokenInteractor from '../../../domain/interactors/TokenInteractor';
 export default class Authorized extends Vue {
   beforeCreate() {
     const code = this.$route.query.code as string;
-    TokenInteractor.create(code).then(() => this.$router.push('/'));
+    const state = this.$route.query.state as string;
+    TokenInteractor.create(code, state).then(() => this.$router.push('/'));
   }
 }
 </script>
