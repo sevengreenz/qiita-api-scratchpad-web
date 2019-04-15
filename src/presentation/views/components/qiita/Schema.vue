@@ -14,7 +14,7 @@
 
           <api-data-param :api="targetApi" :params="dataParams"></api-data-param>
 
-          <v-btn color="primary" dark v-on:click="execute">Exec</v-btn>
+          <v-btn color="primary" v-on:click="execute">実行</v-btn>
 
           <unauthorized :isShow="hasError" :onDisagree="hideError"></unauthorized>
           <api-result :result="result"></api-result>

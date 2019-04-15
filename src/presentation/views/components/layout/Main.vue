@@ -3,7 +3,7 @@
     <v-navigation-drawer fixed v-model="drawer" app>
       <side></side>
     </v-navigation-drawer>
-    <v-toolbar app class="light-green" dark fixed>
+    <v-toolbar app class="primary" dark fixed>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       <v-toolbar-title>Qiita API Scratchpad</v-toolbar-title>
     </v-toolbar>
@@ -12,7 +12,7 @@
         <router-view></router-view>
       </v-container>
     </v-content>
-    <v-footer class="light-green"></v-footer>
+    <v-footer class="primary"></v-footer>
   </v-app>
 </template>
 
