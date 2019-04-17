@@ -3,6 +3,7 @@ var webpack = require('webpack');
 const Dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 const DEBUG = process.env.NODE_ENV !== 'production';
 
@@ -85,7 +86,10 @@ module.exports = {
           removeComments: true,
           removeEmptyAttributes: true
         }
-    })
+    }),
+    new CopyPlugin([
+      { from: 'src/assets', to: 'assets' },
+    ]),
   ],
   devtool: 'source-map'
 };
